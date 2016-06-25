@@ -33,7 +33,6 @@ def predict_output(feature_matrix, weights):
 
     return predictions
 
-
 def feature_derivative_ridge(errors, feature, weight, l2_penalty, feature_is_constant):
     # If feature_is_constant is True, derivative is twice the dot product of errors and feature
     if feature_is_constant:
@@ -43,7 +42,6 @@ def feature_derivative_ridge(errors, feature, weight, l2_penalty, feature_is_con
         derivative = 2 * np.dot(errors, feature) + 2 * l2_penalty * weight
 
     return derivative
-
 
 def ridge_regression_gradient_descent(feature_matrix, output, initial_weights, step_size, l2_penalty,
                                       max_iterations=100):
@@ -74,6 +72,3 @@ def get_rss(feature_matrix, weights, output):
     RSS = sum(map(lambda x: x**2, residuals))
 
     return RSS
-
-
-
