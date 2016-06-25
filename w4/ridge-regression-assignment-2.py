@@ -1,9 +1,9 @@
-############################
+########################################################################################################
 #
 # Contains several functions that are used to perform gradient descent for ridge regression utilizing numpy
 # i.e. the inner-workings of a package such as scikit-learn or graphlab-create for ridge regression proving I know math
 #
-##############################
+########################################################################################################
 
 import graphlab as gl
 import numpy as np
