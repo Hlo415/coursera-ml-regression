@@ -47,7 +47,7 @@ def ridge_regression_gradient_descent(feature_matrix, output, initial_weights, s
                                       max_iterations=100):
     weights = np.array(initial_weights)  # make sure it's a numpy array
     iteration = 1
-    while iteration <= 100:
+    while iteration <= max_iterations:
         # Compute predictions
         predictions = predict_output(feature_matrix, weights)
 
