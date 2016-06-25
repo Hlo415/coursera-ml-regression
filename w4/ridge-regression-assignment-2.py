@@ -28,7 +28,7 @@ def get_numpy_data(data_sframe, features, output):
 
 def predict_output(feature_matrix, weights):
     # assume feature_matrix is numpy matrix containing features as columns and weights is a corresponding numpy array
-    # create the predictions vector by using np.dot()
+    # the predictions are the dot product of the feature_matrix matrix and the weights vector
     predictions = np.dot(feature_matrix, weights)
 
     return predictions
@@ -54,14 +54,15 @@ def ridge_regression_gradient_descent(feature_matrix, output, initial_weights, s
         # Compute errors
         errors = predictions - output
 
-        for i in xrange(len(weights)):  # loop over each weight
+        # Loop over each weight, computing derivative and updating the weights vector at each index i
+        for i in xrange(len(weights)):
             # Compute derivative using feature_derivative_ridge, ensuring we calculate constant correctly
             derivative = feature_derivative_ridge(errors, feature_matrix[:, i], l2_penalty, True if i == 0 else False)
 
             # Subtract the step size times the derivative from the current weight
             weights[i] -= (step_size * derivative)
 
-        # All weights are updated. Time for the next iteration
+        # All weights are updated. Time for the next iteration of max_iterations
         iteration += 1
 
     return weights
