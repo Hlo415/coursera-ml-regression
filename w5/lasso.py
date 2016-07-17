@@ -85,3 +85,13 @@ def get_nnz(weights, features):
 
     return nnz
 
+
+def normalize_weights(feature_matrix, output, l1_penalty, tolerance):
+    normalized_features, norms = normalize_features(feature_matrix)
+
+    initial_weights = np.zeros(feature_matrix.shape[1])
+    weights = lasso_cyclical_coordinate_descent(normalized_features, output, initial_weights, l1_penalty, tolerance)
+    weights_normalized = weights / norms
+
+    return weights_normalized
+
